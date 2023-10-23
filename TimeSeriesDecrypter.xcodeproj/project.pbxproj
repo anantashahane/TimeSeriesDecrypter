@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C8D965B2AE5738500ECF917 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8C8D965A2AE5738500ECF917 /* PythonKit */; };
 		8CC38FDE2AD2F2EA0091C65D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC38FDD2AD2F2EA0091C65D /* main.swift */; };
+		8CC38FE52AD2F32B0091C65D /* GenerateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC38FE42AD2F32B0091C65D /* GenerateData.swift */; };
+		8CC38FE72AD2F6D00091C65D /* EvolutionaryAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC38FE62AD2F6D00091C65D /* EvolutionaryAlgorithm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +26,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8C8D965D2AE577D300ECF917 /* TimeSeriesDecrypterDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimeSeriesDecrypterDebug.entitlements; sourceTree = "<group>"; };
 		8CC38FDA2AD2F2EA0091C65D /* TimeSeriesDecrypter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TimeSeriesDecrypter; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CC38FDD2AD2F2EA0091C65D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		8CC38FE42AD2F32B0091C65D /* GenerateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateData.swift; sourceTree = "<group>"; };
+		8CC38FE62AD2F6D00091C65D /* EvolutionaryAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionaryAlgorithm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C8D965B2AE5738500ECF917 /* PythonKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +48,8 @@
 		8CC38FD12AD2F2EA0091C65D = {
 			isa = PBXGroup;
 			children = (
+				8CC38FE62AD2F6D00091C65D /* EvolutionaryAlgorithm.swift */,
+				8CC38FE42AD2F32B0091C65D /* GenerateData.swift */,
 				8CC38FDC2AD2F2EA0091C65D /* TimeSeriesDecrypter */,
 				8CC38FDB2AD2F2EA0091C65D /* Products */,
 			);
@@ -57,6 +66,7 @@
 		8CC38FDC2AD2F2EA0091C65D /* TimeSeriesDecrypter */ = {
 			isa = PBXGroup;
 			children = (
+				8C8D965D2AE577D300ECF917 /* TimeSeriesDecrypterDebug.entitlements */,
 				8CC38FDD2AD2F2EA0091C65D /* main.swift */,
 			);
 			path = TimeSeriesDecrypter;
@@ -78,6 +88,9 @@
 			dependencies = (
 			);
 			name = TimeSeriesDecrypter;
+			packageProductDependencies = (
+				8C8D965A2AE5738500ECF917 /* PythonKit */,
+			);
 			productName = TimeSeriesDecrypter;
 			productReference = 8CC38FDA2AD2F2EA0091C65D /* TimeSeriesDecrypter */;
 			productType = "com.apple.product-type.tool";
@@ -106,6 +119,9 @@
 				Base,
 			);
 			mainGroup = 8CC38FD12AD2F2EA0091C65D;
+			packageReferences = (
+				8C8D96592AE5738500ECF917 /* XCRemoteSwiftPackageReference "PythonKit" */,
+			);
 			productRefGroup = 8CC38FDB2AD2F2EA0091C65D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -120,6 +136,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CC38FE72AD2F6D00091C65D /* EvolutionaryAlgorithm.swift in Sources */,
+				8CC38FE52AD2F32B0091C65D /* GenerateData.swift in Sources */,
 				8CC38FDE2AD2F2EA0091C65D /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,6 +266,8 @@
 		8CC38FE22AD2F2EA0091C65D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TimeSeriesDecrypter/TimeSeriesDecrypterDebug.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q7KHHPX4EM;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -259,6 +279,7 @@
 		8CC38FE32AD2F2EA0091C65D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TimeSeriesDecrypter/TimeSeriesDecrypter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q7KHHPX4EM;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -289,6 +310,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8C8D96592AE5738500ECF917 /* XCRemoteSwiftPackageReference "PythonKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:pvieito/PythonKit.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8C8D965A2AE5738500ECF917 /* PythonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C8D96592AE5738500ECF917 /* XCRemoteSwiftPackageReference "PythonKit" */;
+			productName = PythonKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8CC38FD22AD2F2EA0091C65D /* Project object */;
 }
