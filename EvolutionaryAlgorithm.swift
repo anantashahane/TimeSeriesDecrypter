@@ -31,19 +31,22 @@ class EvolutionaryAlgorithm {
     let subtimeSeriesCount : Int
     let offspringPopulationSize : Int
     let parentPopulationSize : Int
-    
+    let optimal : [Int : Double]
     //Variables
     var bestError = Double.infinity
     var parentPopulation = [Individual]()
     var offspringPopulation = [Individual]()
     var recombinedEntity : Individual
-    init(parentPopulationSize : Int, offspringPopulationSize : Int) {
+    var progression = [[Int : Double]]()
+    var errorProgression = [Double]()
+    init(parentPopulationSize : Int, offspringPopulationSize : Int, numberOfWavelets : Int) {
         baseTimeSeries = [:]
         var weightage = [Int : Double]()
-        for i in 1...10 {
+        for i in 1...numberOfWavelets {
             baseTimeSeries[i] = GenerateData(amplitude: Double.random(in: 1...10), frequency: Double.random(in: 1...20), phase: Double.random(in: 1...10_000))
-            weightage[i] = Double.random(in: 1...100)
+            weightage[i] = Double.random(in: 1...10000)
         }
+        optimal = weightage
         print("Original weightage: \(weightage)")
         data = MixTimeSeries(timeSeries: baseTimeSeries, weightage: weightage)
         recombinedEntity = Individual(numberofSignals: baseTimeSeries.count)
@@ -128,14 +131,16 @@ class EvolutionaryAlgorithm {
         parentPopulation = Array(population[0..<parentPopulationSize])
     }
     
-    func GenerateAlgorithm() -> ([Double], [Double]) {
+    func GenerateAlgorithm(iterationCount : Int) -> ([Double], [Double]) {
         Initialise()
         var bestSolution  = Individual(numberofSignals: 3)
         Evaluate(evaluateParentPopulation: true)
-        for iteration in 1...10000 {
+        for iteration in 1...iterationCount {
             Recombine()
+            progression.append(recombinedEntity.weightage)
             Mutate()
             Evaluate(evaluateParentPopulation: false)
+            errorProgression.append(recombinedEntity.error!)
             Selection()
             if let bstSolution = parentPopulation.sorted(by: {$0.error ?? Double.infinity > $1.error ?? Double.infinity}).first {
                 bestSolution = bstSolution

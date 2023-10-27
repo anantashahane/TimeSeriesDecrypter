@@ -10,7 +10,7 @@ import Foundation
 func GenerateData(amplitude : Double, frequency : Double, phase : Double) -> [Double] {
     var timeSeries = Array(repeating: 0.0, count: 100)
     for index in 0..<timeSeries.count {
-        let doubleIndex = Double(index)
+//        let doubleIndex = Double(index)
         timeSeries[index] +=  Double.random(in: -amplitude...amplitude)
 //        timeSeries[index] += ((doubleIndex * amplitude * sin(frequency / 1000 * doubleIndex + phase)) + sqrt(doubleIndex) * Double.random(in: -amplitude...amplitude))
     }
