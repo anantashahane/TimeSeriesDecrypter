@@ -86,7 +86,7 @@ class EvolutionaryAlgorithm {
             for(index, _) in timeSeries.enumerated() {
                 error += abs(timeSeries[index] - data[index])
             }
-            recombinedEntity.error = error
+            recombinedEntity.error = error / abs(timeSeries.reduce(0, +))
         }
     }
     
@@ -140,14 +140,17 @@ class EvolutionaryAlgorithm {
             progression.append(recombinedEntity.weightage)
             Mutate()
             Evaluate(evaluateParentPopulation: false)
-            errorProgression.append(recombinedEntity.error!)
             Selection()
             if let bstSolution = parentPopulation.sorted(by: {$0.error ?? Double.infinity > $1.error ?? Double.infinity}).first {
                 bestSolution = bstSolution
                 if bestError > bestSolution.error! {
                     bestError = bestSolution.error!
                 }
+                errorProgression.append(bestSolution.error!)
                 print("Iteration \(iteration): Min Loss \(bestSolution.error!), best fit \(bestSolution.weightage.sorted(by: {$0.key < $1.key}).map({$0.value})).")
+            }
+            if bestSolution.error ?? 1 == 0 {
+                break
             }
         }
         
